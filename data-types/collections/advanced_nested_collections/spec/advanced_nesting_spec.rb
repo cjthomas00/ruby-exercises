@@ -21,24 +21,24 @@ RSpec.describe 'Advanced Nested Collections' do
     expect(employees).to eq(expected)
   end
 
-  xit 'test 2' do
+  it 'test 2' do
     # Find the ingredients for pancakes
-    pancake_ingredients = _____
+    pancake_ingredients = stores[:dennys][:dishes][0][:ingredients]
 
     expected = ["Flour", "Eggs", "Milk", "Syrup"]
     expect(pancake_ingredients).to eq(expected)
   end
 
-  xit 'test 3' do
+  it 'test 3' do
     # Find the price of risotto
-    risotto_price = ____
+    risotto_price = stores[:olive_garden][:dishes][0][:price]
 
     expect(risotto_price).to eq(12)
   end
 
-  xit 'test 4' do
+  it 'test 4' do
     # Find the ingredients for a Big Mac
-    big_mac_ingredients = ____
+    big_mac_ingredients = stores[:macdonalds][:dishes][0][:ingredients]
 
     expected = ['Bun','Hamburger','Ketchup','pickles']
     expect(big_mac_ingredients).to eq(expected)
@@ -46,7 +46,7 @@ RSpec.describe 'Advanced Nested Collections' do
 
   xit 'test 5' do
     # Find a list of restaurants
-    store_names = ____
+    store_names = 
 
     expected = [:olive_garden, :dennys, :macdonalds]
     expect(store_names).to eq(expected)
@@ -54,7 +54,7 @@ RSpec.describe 'Advanced Nested Collections' do
 
   xit 'test 6' do
     # Find dishes names for Olive Garden
-    dishes_names = ____
+    dishes_names = stores[:olive_garden][:dishes][][:name]
 
     expect(dishes_names).to eq(['Risotto', 'Steak'])
   end
