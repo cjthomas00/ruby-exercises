@@ -44,25 +44,30 @@ RSpec.describe 'Advanced Nested Collections' do
     expect(big_mac_ingredients).to eq(expected)
   end
 
-  xit 'test 5' do
+  it 'test 5' do
     # Find a list of restaurants
-    store_names = 
+    store_names = stores.keys
 
     expected = [:olive_garden, :dennys, :macdonalds]
     expect(store_names).to eq(expected)
   end
 
-  xit 'test 6' do
+  it 'test 6' do
     # Find dishes names for Olive Garden
-    dishes_names = stores[:olive_garden][:dishes][][:name]
-
+    dishes_names = []
+    stores[:olive_garden][:dishes].each do |dish|
+      dishes_names << dish[:name]
+    end
     expect(dishes_names).to eq(['Risotto', 'Steak'])
   end
 
-  xit 'test 7' do
+  it 'test 7' do
     # Return a list of employees across
     # all restaurants
-    employee_names = ____
+    employee_names = []
+    stores.each do |k,v|
+      employee_names.concat(v[:employees])
+    end
 
     expected = ["Jeff", "Zach", "Samantha", "Bob", "Sue", "James", "Alvin", "Simon", "Theodore"]
     expect(employee_names).to eq(expected)
@@ -71,7 +76,13 @@ RSpec.describe 'Advanced Nested Collections' do
   xit 'test 8' do
     # Return a list of all ingredients
     # across all restaurants
-    ingredients = ____
+
+    ingredients = 
+    stores.each do |store, data|
+      data[:dishes].each do |dish|
+      ingredients.concat(dish[:ingredients])
+      end
+    end
 
     expected = [
       "Rice",
@@ -96,17 +107,21 @@ RSpec.describe 'Advanced Nested Collections' do
     expect(ingredients).to eq(expected)
   end
 
-  xit 'test 9' do
+  it 'test 9' do
     # Return the full menu price for Olive Garden
-    full_menu_price = ____
-
+    full_menu_price = 0
+    stores[:olive_garden][:dishes].each do |dish|
+      full_menu_price += dish[:price]
+    end
     expect(full_menu_price).to eq(27)
   end
 
-  xit 'test 10' do
+  it 'test 10' do
     # Return the full menu for Olive Garden
-
-    olive_garden_menu = _____
+    olive_garden_menu = {}
+    stores[:olive_garden][:dishes].each do |dish|
+      olive_garden_menu[dish[:name]] = dish
+    end
     
     expected = {
       "Risotto" => {
@@ -123,9 +138,14 @@ RSpec.describe 'Advanced Nested Collections' do
     expect(olive_garden_menu).to eq(expected)
   end
 
-  xit 'test 11' do
+  it 'test 11' do
     # Return a full menu across all restaurants
-    full_menu = ____
+    full_menu = {}
+    stores.each do |store, data|
+      data[:dishes].each do |dish|
+        full_menu[dish[:name]] = dish
+      end
+    end
 
     expected = {
       "Risotto" => {
