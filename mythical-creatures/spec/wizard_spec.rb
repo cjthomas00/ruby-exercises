@@ -1,12 +1,12 @@
 require 'rspec'
 require './lib/wizard'
 
-RSpec.describe Wizard do
+RSpec.describe Wizard do 
   it 'has a name' do
-    wizard = Wizard.new('Eric')
-    expect(wizard.name).to eq('Eric')
+  wizard = Wizard.new('Eric')
+  expect(wizard.name).to eq('Eric')
   end
-
+  
   it 'has a different name' do
     wizard = Wizard.new('Alex')
     expect(wizard.name).to eq('Alex')
