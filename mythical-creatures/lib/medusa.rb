@@ -9,7 +9,13 @@ class Medusa
 
   def stare(victim)
     victim.stone = true
-    @statues << victim
+    if @statues.length < 3
+    @statues.push(victim)
+    elsif @statues.length == 3
+      @statues.push(victim)
+      @statues.shift
+    else
+    end
   end
 end
 
