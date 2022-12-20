@@ -84,19 +84,43 @@ RSpec.describe Werewolf do
     werewolf.change!
     expect(werewolf.wolf?).to be true
     expect(werewolf.hungry?).to be true
+    expect(werewolf.consume(victim)).to eq([victim])
+  end
+
+  it 'cannot consume a victim if it is in human form' do
+    werewolf = Werewolf.new('David', 'London')
+    victim = Victim.new
+    expect(werewolf.hungry?).to be false
+
+    # require 'pry'; binding.pry
+    expect(werewolf.wolf?).to be false
     werewolf.consume(victim)
+    expect(werewolf.consume(victim)).to eq("Not possible in human form.")
   end
 
-  xit 'cannot consume a victim if it is in human form' do
-    # your code here
+  it 'a werewolf that has consumed a human being is no longer hungry' do
+    werewolf = Werewolf.new('David', 'London')
+    victim = Victim.new
+    expect(werewolf.hungry?).to be false
+
+    werewolf.change!
+    expect(werewolf.wolf?).to be true
+    expect(werewolf.hungry?).to be true
+    expect(werewolf.consume(victim)).to eq([victim])
+    expect(werewolf.hungry?).to be false
   end
 
-  xit 'a werewolf that has consumed a human being is no longer hungry' do
-    # your code here
-  end
+  it 'a werewolf who has consumed a victim makes the victim dead' do
+    werewolf = Werewolf.new('David', 'London')
+    victim = Victim.new
+    expect(werewolf.hungry?).to be false
 
-  xit 'a werewolf who has consumed a victim makes the victim dead' do
-    # your code here
+    werewolf.change!
+    expect(werewolf.wolf?).to be true
+    expect(werewolf.hungry?).to be true
+    expect(werewolf.consume(victim)).to eq([victim])
+    expect(werewolf.hungry?).to be false
+    expect(victim.status).to eq(:dead)
   end
 
 end

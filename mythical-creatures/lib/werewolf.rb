@@ -9,6 +9,7 @@ class Werewolf
     @change = 0
     @wolf = false
     @hungry = false
+    @victims = []
   end
 
   def human?
@@ -29,11 +30,23 @@ class Werewolf
   def wolf?
     if @change.odd?
       @wolf = true
+    else
+      false
     end
   end
 
   def hungry?
     @hungry
+  end
+
+  def consume(victim)
+    victim.status = :dead
+    if wolf? == false
+     "Not possible in human form."
+    else
+      @hungry = false
+      @victims.push(victim)
+    end
   end
   
 end
