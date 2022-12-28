@@ -17,8 +17,8 @@ RSpec.describe 'sort_by pattern' do
   it 'alphabetically by last letter' do
     things = ["pill", "box", "glass", "water", "sponge"]
     transformed = []
-    things.each do |thing.
-      transformed << thing
+    things.each do |thing|
+      transformed << [thing]
     end
     transformed = transformed.sort
     sorted = []
