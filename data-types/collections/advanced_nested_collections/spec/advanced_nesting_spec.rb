@@ -73,11 +73,11 @@ RSpec.describe 'Advanced Nested Collections' do
     expect(employee_names).to eq(expected)
   end
 
-  xit 'test 8' do
+  it 'test 8' do
     # Return a list of all ingredients
     # across all restaurants
 
-    ingredients = 
+    ingredients = []
     stores.each do |store, data|
       data[:dishes].each do |dish|
       ingredients.concat(dish[:ingredients])
