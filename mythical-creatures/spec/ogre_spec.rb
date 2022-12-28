@@ -2,23 +2,23 @@ require './spec/spec_helper'
 require './lib/ogre'
 
 RSpec.describe Ogre do
-  it 'has a name' do
+  xit 'has a name' do
     ogre = Ogre.new('Brak')
     expect(ogre.name).to eq('Brak')
   end
 
-  it 'lives somewhere by default' do
+  xit 'lives somewhere by default' do
     ogre = Ogre.new('Brak')
     expect(ogre.home).to eq('Swamp')
   end
 
-  it 'doesnt have to live in a swamp' do
+  xit 'doesnt have to live in a swamp' do
     ogre = Ogre.new('Brak', 'Castle')
 
     expect(ogre.home).to eq('Castle')
   end
 
-  it 'can meets humans' do
+  xit 'can meets humans' do
     ogre = Ogre.new('Brak')
     human = Human.new
     expect(human.name).to eq('Jane')
@@ -33,7 +33,6 @@ RSpec.describe Ogre do
     human = Human.new
 
     ogre.encounter(human)
-    # require 'pry'; binding.pry
     ogre.encounter(human)
     expect(human.notices_ogre?).to be false
 
